@@ -5,6 +5,7 @@ import random
 from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
+app.config['UPLoAD_FOLDER'] = os.path.join(os.path.dirname(os.path.realpath(__file__)),'UPLoAD_FOLDER')
 
 @app.route("/")
 def jokes():
