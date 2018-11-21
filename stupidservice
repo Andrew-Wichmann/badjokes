@@ -6,8 +6,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-
-    
     jokes = ['If your American going into the bathroom and American when you come out, what are you in the bathroom?...\nEuropean.', 'What did the fish say when he swam into a wall?...\nDam.']
     return random.choice(jokes)
 
