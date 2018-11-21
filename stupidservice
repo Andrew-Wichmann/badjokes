@@ -1,11 +1,13 @@
 #!/usr/bin/python
-from flask import Flask, jsonify
+import os
 import random
+
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def jokes():
     
     jokes = [
         ('If your American going into the bathroom and American when you come out, what are you in the bathroom?...','European.'),
@@ -27,6 +29,22 @@ def hello():
 
     return jsonify(random.choice(l_jokes))
 
+@app.route("/index.html")
+def home():
+    return render_template("index.html")
+
+@app.route("/images", methods=['POST'])
+def image_upload():
+    file = request.files['image']
+    f = os.path.join(app.config['UPLoAD_FOLDER'], file.filename)
+
+    file.save(f)
+
+    return "Uploaded!!!!! HURRAY!!"
+
+@app.route("/image_upload_page")
+def upload_page():
+    return render_template('upload.html')
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0',port='8090')
