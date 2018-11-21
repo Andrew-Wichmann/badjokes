@@ -32,7 +32,7 @@ def jokes():
 
 @app.route("/index.html")
 def home():
-    return render_template("index.html")
+    return render_template("./index.html")
 
 @app.route("/images", methods=['POST'])
 def image_upload():
@@ -45,7 +45,7 @@ def image_upload():
 
 @app.route("/image_upload_page")
 def upload_page():
-    return render_template('upload.html')
+    return render_template('./upload.html')
 
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0',port='8090')
